@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Generator</title>
+    <title>QR Code Generator</title> <!-- Updated title here -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
@@ -12,18 +12,23 @@
         <form method="POST" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
             <div class="form-group">
-                {{ form.link.label }}<br>
-                {{ form.link(size=32) }}<br>
+                <label for="link">Please enter a link:</label><br>
+                {{ form.link(size=32, placeholder='Enter your link here') }}<br>
                 {% for error in form.link.errors %}
                     <span class="error-message">{{ error }}</span><br>
                 {% endfor %}
             </div>
             <div class="form-group">
-                {{ form.image.label }}<br>
-                {{ form.image }}<br>
-                {% for error in form.image.errors %}
-                    <span class="error-message">{{ error }}</span><br>
-                {% endfor %}
+                <label for="color">Choose fill color for QR code:</label><br>
+                <select name="color" id="color">
+                    <option value="black">Black</option>
+                    <option value="red">Red</option>
+                    <option value="green">Green</option>
+                    <option value="blue">Blue</option>
+                    <option value="pink">Pink</option>
+                    <option value="purple">Purple</option>
+                    <!-- Add more color options as needed -->
+                </select>
             </div>
             <div class="form-group">
                 {{ form.submit() }}
