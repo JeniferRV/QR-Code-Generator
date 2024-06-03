@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Generator</title> <!-- Updated title here -->
+    <title>QR Code Generator</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Generate QR Code</h1>
-        <form method="POST" enctype="multipart/form-data">
+        <h1>QR Code Generator</h1> <!-- Updated title -->
+        <form method="POST" enctype="multipart/form-data" action="/">
             {{ form.hidden_tag() }}
             <div class="form-group">
                 <label for="link">Please enter a link:</label><br>
