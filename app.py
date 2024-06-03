@@ -10,16 +10,13 @@ def index():
     form = QRForm()
     if form.validate_on_submit():
         link = form.link.data
-        image = form.image.data
+        color = request.form['color'] # get selected color from form
         if link:
-            qr_code = generate_qr_code(link)
-        elif image:
-            # Handle image upload and generate QR code
-            pass
+            qr_code = generate_qr_code(link, color) # pass color to generate_qr_code function
+            return render_template('result.html', qr_code=qr_code)
         else:
-            # Handle case where neither link nor image is provided
-            pass
-        return render_template('result.html', qr_code=qr_code)
+            # Handle case where link is not provided
+            return "Please provide a link"
     return render_template('index.html', form=form)
 
 if __name__ == '__main__':
